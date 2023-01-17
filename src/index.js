@@ -7,8 +7,10 @@ import {
 } from "react-router-dom";
 import reportWebVitals from './reportWebVitals';
 import Root from './routes/root';
-import { Amplify } from 'aws-amplify';
+import Index from "./routes/index";
+import { Amplify, API, graphqlOperation } from 'aws-amplify';
 import awsExports from './aws-exports';
+import { listProducts } from "./graphql/queries";
 Amplify.configure(awsExports);
 
 
@@ -16,6 +18,17 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Root/>,
+    children: [
+      {
+        index: true,
+        element: <Index/>,
+        loader: async () => {
+          const listOfProducts = await API.graphql(graphqlOperation(listProducts));
+          const listOfProductsItems = listOfProducts.data.listProducts.items;
+          return listOfProductsItems;
+        }
+      }
+    ]
   },
 ]);
 
