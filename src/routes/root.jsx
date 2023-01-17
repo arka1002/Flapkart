@@ -10,7 +10,7 @@ Amplify.configure(awsExports);
 
 export default function Root() {
 
-    console.log(`Hi mom!!`);
+    console.log(`From root.jsx`);
     return (
         <>
             <div className="flex flex-row h-24 items-center justify-evenly">
