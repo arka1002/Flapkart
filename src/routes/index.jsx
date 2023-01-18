@@ -31,7 +31,7 @@ export default function Index() {
                                     title="green iguana"
                                 />
                                 <CardContent>
-                                    <NavLink to={`product/${product.id}`}>
+                                    <NavLink to={`products/${product.id}`}>
                                         <Typography gutterBottom variant="h5" component="div">
                                             {product.name}
                                         </Typography>
