@@ -1,6 +1,6 @@
 import { Amplify } from "aws-amplify";
 import awsExports from '../aws-exports';
-import { useLoaderData, Link } from "react-router-dom";
+import { useLoaderData, Link, redirect, useNavigate } from "react-router-dom";
 import { Button } from "@aws-amplify/ui-react";
 import { useState } from "react";
 import '@aws-amplify/ui-react/styles.css';
@@ -12,6 +12,7 @@ Amplify.configure(awsExports);
 export default function Product() {
     const product = useLoaderData();
     const [count, setCount] = useState(0);
+    const navigate = useNavigate();
 
     function increaseCount() {
         if (count >= 0 && count < 10) {
@@ -26,7 +27,10 @@ export default function Product() {
     }
     let content;
     if (count >= 1) {
-        content = <Link to={`/products/:productID/purchased`}><Button>Buy</Button></Link>
+        content = <Button onClick={() => {
+            alert(`Are you sure want to buy ${count} ${product.name}?`);
+            navigate(`/products/${product.id}/purchased`);
+        }}>Buy</Button>
     }
     return (
         <div key={product.id}>
