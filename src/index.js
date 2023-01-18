@@ -9,6 +9,7 @@ import reportWebVitals from './reportWebVitals';
 import Root from './routes/root';
 import Product from './routes/product';
 import Index from "./routes/index";
+import Purchase from "./routes/purchase";
 import { Amplify, API, graphqlOperation } from 'aws-amplify';
 import awsExports from './aws-exports';
 import { listProducts, getProduct } from "./graphql/queries";
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
           return product;
         }
 
+      },
+      {
+        element: <Purchase/>,
+        path: "products/:productID/purchased"
       }
     ]
   },

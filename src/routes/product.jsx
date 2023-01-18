@@ -1,6 +1,6 @@
 import { Amplify } from "aws-amplify";
 import awsExports from '../aws-exports';
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, Link } from "react-router-dom";
 import { Button } from "@aws-amplify/ui-react";
 import { useState } from "react";
 import '@aws-amplify/ui-react/styles.css';
@@ -24,12 +24,16 @@ export default function Product() {
             setCount(count - 1)
         }
     }
-
+    let content;
+    if (count >= 1) {
+        content = <Link to={`/products/:productID/purchased`}><Button>Buy</Button></Link>
+    }
     return (
         <div key={product.id}>
             <h1>{product.name}</h1>
             <p>{product.description}</p>
             <Button onClick={decreaseCount}>-</Button><p>{count}</p><Button onClick={increaseCount}>+</Button>
+            {content}
         </div>
     );
 };
