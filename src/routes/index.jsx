@@ -41,7 +41,7 @@ export default function Index() {
                                     </Typography>
                                 </CardContent>
                                 <CardActions>
-                                    <NavLink to={`product/${product.id}`}><Button size="small">Buy Now</Button></NavLink>
+                                    <NavLink to={`products/${product.id}`}><Button size="small">Buy Now</Button></NavLink>
                                 </CardActions>
                             </Card>
                         </div>
