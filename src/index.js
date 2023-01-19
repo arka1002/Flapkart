@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import reportWebVitals from './reportWebVitals';
 import Root from './routes/root';
-import Product from './routes/product';
+import Headphones from './routes/headphones';
 import Index from "./routes/index";
 import Purchase from "./routes/purchase";
 import { Amplify, API, graphqlOperation } from 'aws-amplify';
@@ -31,13 +31,8 @@ const router = createBrowserRouter([
         }
       },
       {
-        element: <Product />,
-        path: "products/:productID",
-        loader: async ({ params }) => {
-          const oneProd = await API.graphql(graphqlOperation(getProduct, { id: params.productID }));
-          const product = oneProd.data.getProduct;
-          return product;
-        }
+        element: <Headphones />,
+        path: "category/headphones",
 
       },
       {

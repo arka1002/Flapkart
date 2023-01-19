@@ -7,6 +7,10 @@ export const getProduct = /* GraphQL */ `
       id
       name
       description
+      price
+      category
+      isLiked
+      isCarted
       createdAt
       updatedAt
     }
@@ -23,6 +27,10 @@ export const listProducts = /* GraphQL */ `
         id
         name
         description
+        price
+        category
+        isLiked
+        isCarted
         createdAt
         updatedAt
       }

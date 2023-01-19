@@ -1,6 +1,6 @@
 import { Amplify } from "aws-amplify";
 import awsExports from '../aws-exports';
-import { useLoaderData, Link, redirect, useNavigate } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { Button } from "@aws-amplify/ui-react";
 import { useState } from "react";
 import '@aws-amplify/ui-react/styles.css';

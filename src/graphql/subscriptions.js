@@ -7,6 +7,10 @@ export const onCreateProduct = /* GraphQL */ `
       id
       name
       description
+      price
+      category
+      isLiked
+      isCarted
       createdAt
       updatedAt
     }
@@ -18,6 +22,10 @@ export const onUpdateProduct = /* GraphQL */ `
       id
       name
       description
+      price
+      category
+      isLiked
+      isCarted
       createdAt
       updatedAt
     }
@@ -29,6 +37,10 @@ export const onDeleteProduct = /* GraphQL */ `
       id
       name
       description
+      price
+      category
+      isLiked
+      isCarted
       createdAt
       updatedAt
     }

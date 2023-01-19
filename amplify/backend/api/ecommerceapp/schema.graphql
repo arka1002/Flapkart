@@ -6,4 +6,8 @@ type Product @model {
   id: ID!
   name: String!
   description: String
+  price: String
+  category: String
+  isLiked: String
+  isCarted: String
 }
