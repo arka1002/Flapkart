@@ -9,10 +9,9 @@ import reportWebVitals from './reportWebVitals';
 import Root from './routes/root';
 import Headphones from './routes/headphones';
 import Index from "./routes/index";
-import Purchase from "./routes/purchase";
 import { Amplify, API, graphqlOperation } from 'aws-amplify';
 import awsExports from './aws-exports';
-import { listProducts, getProduct } from "./graphql/queries";
+import { listProducts } from "./graphql/queries";
 Amplify.configure(awsExports);
 
 
@@ -33,12 +32,15 @@ const router = createBrowserRouter([
       {
         element: <Headphones />,
         path: "category/headphones",
-
+        loader: async () => {
+          const listofHeadphones = await API.graphql({
+            query: listProducts,
+            variables: { filter: { category: { eq: "headphones" } } }
+          })
+          const theList = listofHeadphones.data.listProducts.items;
+          return theList;
+        }
       },
-      {
-        element: <Purchase/>,
-        path: "products/:productID/purchased"
-      }
     ]
   },
 ]);
