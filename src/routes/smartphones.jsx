@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, NavLink } from "react-router-dom";
 import { Flex, Divider, Button } from "@aws-amplify/ui-react";
 import '@aws-amplify/ui-react/styles.css';
 import Card from '@mui/material/Card';
@@ -8,6 +8,15 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import { useState } from "react";
+import { useQueryClient, useQuery, useMutation } from "@tanstack/react-query";
+import { API } from "aws-amplify";
+import { getProduct } from "../graphql/queries";
+import { updateProduct } from "../graphql/mutations";
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
+
+
+
 
 export default function Smartphones() {
     const smartphonesList = useLoaderData();
@@ -22,7 +31,7 @@ export default function Smartphones() {
         setPrice(map2);
     }
     function lessthan10000() {
-        const map3 = smartphonesList.filter(prod => prod.price < 10000  && prod.price > 5000)
+        const map3 = smartphonesList.filter(prod => prod.price < 10000 && prod.price > 5000)
         setPrice(map3);
     }
     function lessthan15000() {
@@ -70,7 +79,8 @@ export default function Smartphones() {
                                         </Typography>
                                     </CardContent>
                                     <CardActions>
-                                        <Button>Buy</Button>
+                                        <NavLink to={`/buy`}><Button>Buy</Button></NavLink>
+                                        <CartButton id={headphone.id} />
                                     </CardActions>
                                 </Card>
                             </div>
@@ -81,3 +91,48 @@ export default function Smartphones() {
         </>
     );
 };
+
+
+
+
+function CartButton({ id }) {
+    const queryClient = useQueryClient();
+    const mutationliking = useMutation({
+        mutationFn: async (add) => {
+            await API.graphql({
+                query: updateProduct,
+                variables: { input: { id: id, isLiked: add } }
+            })
+        },
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: ['carts'] })
+        },
+    })
+
+    const { isLoading, isError, data, error } = useQuery({
+        queryKey: ['carts', id],
+        queryFn: async () => {
+            const var1 = await API.graphql({
+                query: getProduct,
+                variables: { id: id }
+            });
+            const var2 = var1.data.getProduct;
+            return var2;
+        }
+    })
+
+
+    if (isLoading) {
+        return <span>Loading...</span>
+    }
+
+    if (isError) {
+        return <span>Error: {error.message}</span>
+    }
+
+    return (
+        <>
+            {data.isLiked === "no" ? <Button onClick={() => { mutationliking.mutate("yes") }}><AddShoppingCartIcon /></Button> : <Button onClick={() => { mutationliking.mutate("no") }}><RemoveShoppingCartIcon /></Button>}
+        </>
+    );
+}
