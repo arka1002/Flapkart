@@ -14,6 +14,8 @@ import { Amplify, API, graphqlOperation } from 'aws-amplify';
 import awsExports from './aws-exports';
 import { listProducts } from "./graphql/queries";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import Buy from './routes/buy';
+
 Amplify.configure(awsExports);
 
 
@@ -56,6 +58,10 @@ const router = createBrowserRouter([
           const phonesList = listofSmartphones.data.listProducts.items;
           return phonesList;
         }
+      },
+      {
+        element: <Buy/>,
+        path: "buy"
       }
     ]
   },

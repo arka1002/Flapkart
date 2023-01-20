@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { NavLink, useLoaderData } from "react-router-dom";
 import { API } from "aws-amplify";
 import { Flex, Divider, Button } from "@aws-amplify/ui-react";
 import '@aws-amplify/ui-react/styles.css';
@@ -79,7 +79,7 @@ export default function Headphones() {
                                         </Typography>
                                     </CardContent>
                                     <CardActions>
-                                        <Button>Buy</Button><LikeButton id={headphone.id} isLiked={headphone.isLiked} />
+                                        <NavLink to={`/buy`}><Button>Buy</Button></NavLink><LikeButton id={headphone.id} isLiked={headphone.isLiked} />
                                     </CardActions>
                                 </Card>
                             </div>
