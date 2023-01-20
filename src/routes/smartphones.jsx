@@ -9,32 +9,28 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import { useState } from "react";
 
-
-export default function Headphones() {
-    //use the loader data
-    const headphoneList = useLoaderData();
-    const [state, setState] = useState(headphoneList);
-
-
-    function lessthan1000() {
-        const map1000 = headphoneList.filter(product => product.price < 1000);
-        setState(map1000);
-    }
-
-    function lessthan5000() {
-        const map5000 = headphoneList.filter(product => product.price < 5000 && product.price > 1000);
-        setState(map5000);
-    }
-
-    function lessthan10000() {
-        const map10000 = headphoneList.filter(product => product.price < 10000 && product.price > 5000);
-        setState(map10000);
-    }
+export default function Smartphones() {
+    const smartphonesList = useLoaderData();
+    const [price, setPrice] = useState(smartphonesList);
 
     function lessthanall() {
-        const mapAll = headphoneList.filter(product => product);
-        setState(mapAll);
+        const map1 = smartphonesList.filter(prod => prod);
+        setPrice(map1);
     }
+    function lessthan5000() {
+        const map2 = smartphonesList.filter(prod => prod.price < 5000)
+        setPrice(map2);
+    }
+    function lessthan10000() {
+        const map3 = smartphonesList.filter(prod => prod.price < 10000  && prod.price > 5000)
+        setPrice(map3);
+    }
+    function lessthan15000() {
+        const map3 = smartphonesList.filter(prod => prod.price < 15000 && prod.price > 10000)
+        setPrice(map3);
+    }
+
+
 
 
     return (
@@ -42,9 +38,9 @@ export default function Headphones() {
             <p>Price Range</p>
             <ul className="list-none mb-2">
                 <li className="mt-2 ml-2"><Button onClick={lessthanall}>All</Button></li>
-                <li className="mt-2 ml-2"><Button onClick={lessthan1000}>₹0 - ₹1,000</Button></li>
-                <li className="mt-2 ml-2"><Button onClick={lessthan5000}>₹1,000 - ₹5,000</Button></li>
+                <li className="mt-2 ml-2"><Button onClick={lessthan5000}>₹0 - ₹5,000</Button></li>
                 <li className="mt-2 ml-2"><Button onClick={lessthan10000}>₹5,000 - ₹10,000</Button></li>
+                <li className="mt-2 ml-2"><Button onClick={lessthan15000}>₹10,000 - ₹15,000</Button></li>
             </ul>
             <Flex direction="column">
                 <Divider
@@ -53,7 +49,7 @@ export default function Headphones() {
 
             <Grid container spacing={2}>
                 {
-                    state.map((headphone) => (
+                    price.map((headphone) => (
                         <Grid item xs={12} md={3}>
                             <div className='flex justify-center' key={headphone.id}>
                                 <Card sx={{ maxWidth: 345 }}>
@@ -82,8 +78,6 @@ export default function Headphones() {
                     ))
                 }
             </Grid>
-
-
         </>
     );
 };

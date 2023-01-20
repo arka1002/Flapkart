@@ -10,15 +10,14 @@ Amplify.configure(awsExports);
 
 
 export default function Index() {
-    console.log(`From index.jsx`);
 
 
     return (
         <div className="flex flex-col place-items-center md:flex-row md:justify-evenly mt-10 gap-y-4">
-            <NavLink to={`/category/headphones`}><div className="p-3 border-4 border-sky-500 rounded-md"><HeadsetIcon/></div></NavLink>
-            <div className="p-3 border-4 border-sky-500 rounded-md"><PhoneAndroidIcon/></div>
-            <div className="p-3 border-4 border-sky-500 rounded-md"><RestaurantIcon/></div>
-            <div className="p-3 border-4 border-sky-500 rounded-md"><WatchIcon/></div>
+            <NavLink to={`/category/headphones`}><div className="p-3 border-4 border-sky-500 rounded-md"><HeadsetIcon /></div></NavLink>
+            <NavLink to={`/category/smartphones`}><div className="p-3 border-4 border-sky-500 rounded-md"><PhoneAndroidIcon /></div></NavLink>
+            <div className="p-3 border-4 border-sky-500 rounded-md"><RestaurantIcon /></div>
+            <div className="p-3 border-4 border-sky-500 rounded-md"><WatchIcon /></div>
         </div>
     );
 

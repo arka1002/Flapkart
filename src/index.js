@@ -8,6 +8,7 @@ import {
 import reportWebVitals from './reportWebVitals';
 import Root from './routes/root';
 import Headphones from './routes/headphones';
+import Smartphones from './routes/smartphones';
 import Index from "./routes/index";
 import { Amplify, API, graphqlOperation } from 'aws-amplify';
 import awsExports from './aws-exports';
@@ -41,6 +42,18 @@ const router = createBrowserRouter([
           return theList;
         }
       },
+      {
+        element: <Smartphones/>,
+        path: "category/smartphones",
+        loader: async () => {
+          const listofSmartphones = await API.graphql({
+            query: listProducts,
+            variables: { filter: { category: { eq: "smartphones" } } }
+          })
+          const phonesList = listofSmartphones.data.listProducts.items;
+          return phonesList;
+        }
+      }
     ]
   },
 ]);
