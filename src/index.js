@@ -13,8 +13,11 @@ import Index from "./routes/index";
 import { Amplify, API, graphqlOperation } from 'aws-amplify';
 import awsExports from './aws-exports';
 import { listProducts } from "./graphql/queries";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 Amplify.configure(awsExports);
 
+
+const queryClient = new QueryClient()
 
 const router = createBrowserRouter([
   {
@@ -43,7 +46,7 @@ const router = createBrowserRouter([
         }
       },
       {
-        element: <Smartphones/>,
+        element: <Smartphones />,
         path: "category/smartphones",
         loader: async () => {
           const listofSmartphones = await API.graphql({
@@ -62,7 +65,9 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
   </React.StrictMode>
 );
 
