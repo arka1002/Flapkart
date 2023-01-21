@@ -12,9 +12,10 @@ import Smartphones from './routes/smartphones';
 import Index from "./routes/index";
 import { Amplify, API, graphqlOperation } from 'aws-amplify';
 import awsExports from './aws-exports';
-import { listProducts } from "./graphql/queries";
+import { listProducts, getProduct } from "./graphql/queries";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Buy from './routes/buy';
+import Product from './routes/product';
 
 Amplify.configure(awsExports);
 
@@ -62,6 +63,18 @@ const router = createBrowserRouter([
       {
         element: <Buy/>,
         path: "buy"
+      },
+      {
+        element: <Product/>,
+        path: "product/:productID",
+        loader: async ({ params }) => {
+          const oneProd = await API.graphql({
+            query: getProduct,
+            variables: { id: params.productID }
+          });
+          const oneProdItem = oneProd.data.getProduct;
+          return oneProdItem;
+        }
       }
     ]
   },

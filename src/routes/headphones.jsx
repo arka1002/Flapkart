@@ -68,13 +68,15 @@ export default function Headphones() {
                                         title="green iguana"
                                     />
                                     <CardContent>
+                                        <NavLink to={`/product/${headphone.id}`}>
+                                            <Typography gutterBottom variant="h5" component="div">
+                                                {headphone.name}
+                                            </Typography>
+                                        </NavLink>
 
-                                        <Typography gutterBottom variant="h5" component="div">
-                                            {headphone.name}
-                                        </Typography>
 
                                         <Typography variant="body2" color="text.secondary" component={'span'} >
-                                            {headphone.description}
+                                            {headphone.description} <br />
                                             <span>Price :- {headphone.price}</span>
                                         </Typography>
                                     </CardContent>
@@ -134,7 +136,7 @@ function LikeButton({ id }) {
 
     return (
         <>
-            {data.isLiked === "no" ? <Button onClick={() => {mutationliking.mutate("yes")}}><AddShoppingCartIcon /></Button> : <Button onClick={() => {mutationliking.mutate("no")}}><RemoveShoppingCartIcon /></Button>}
+            {data.isLiked === "no" ? <Button onClick={() => { mutationliking.mutate("yes") }}><AddShoppingCartIcon /></Button> : <Button onClick={() => { mutationliking.mutate("no") }}><RemoveShoppingCartIcon /></Button>}
         </>
     );
 }

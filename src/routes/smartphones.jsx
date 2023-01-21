@@ -68,13 +68,15 @@ export default function Smartphones() {
                                         title="green iguana"
                                     />
                                     <CardContent>
+                                        <NavLink to={`/product/${headphone.id}`}>
+                                            <Typography gutterBottom variant="h5" component="div">
+                                                {headphone.name}
+                                            </Typography>
+                                        </NavLink>
 
-                                        <Typography gutterBottom variant="h5" component="div">
-                                            {headphone.name}
-                                        </Typography>
 
                                         <Typography variant="body2" color="text.secondary" component={'span'} >
-                                            {headphone.description}
+                                            {headphone.description} <br />
                                             <span>Price :- {headphone.price}</span>
                                         </Typography>
                                     </CardContent>
