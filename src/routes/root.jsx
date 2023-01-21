@@ -18,7 +18,10 @@ export default function Root() {
                 <NavLink to={`/`}>
                     <h1 className='text-xl italic font-bold underline underline-offset-2'>Home <HomeIcon /> </h1>
                 </NavLink>
-                <h1 className='text-xl italic font-bold underline underline-offset-2'>My Profile <PersonIcon /> </h1>
+                <NavLink to={`/myprofile`}>
+                    <h1 className='text-xl italic font-bold underline underline-offset-2'>My Profile <PersonIcon /> </h1>
+                </NavLink>
+
             </div>
             <Flex direction="column">
                 <Divider

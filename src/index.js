@@ -16,6 +16,7 @@ import { listProducts, getProduct } from "./graphql/queries";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Buy from './routes/buy';
 import Product from './routes/product';
+import Profile from './routes/profile';
 
 Amplify.configure(awsExports);
 
@@ -75,6 +76,10 @@ const router = createBrowserRouter([
           const oneProdItem = oneProd.data.getProduct;
           return oneProdItem;
         }
+      },
+      {
+        element: <Profile/>,
+        path: "myprofile"
       }
     ]
   },
