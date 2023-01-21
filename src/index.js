@@ -17,6 +17,11 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Buy from './routes/buy';
 import Product from './routes/product';
 import Profile from './routes/profile';
+import { Authenticator } from '@aws-amplify/ui-react';
+import Login from './routes/login';
+
+
+
 
 Amplify.configure(awsExports);
 
@@ -62,11 +67,11 @@ const router = createBrowserRouter([
         }
       },
       {
-        element: <Buy/>,
+        element: <Buy />,
         path: "buy"
       },
       {
-        element: <Product/>,
+        element: <Product />,
         path: "product/:productID",
         loader: async ({ params }) => {
           const oneProd = await API.graphql({
@@ -78,8 +83,12 @@ const router = createBrowserRouter([
         }
       },
       {
-        element: <Profile/>,
+        element: <Profile />,
         path: "myprofile"
+      },
+      {
+        path: "login/",
+        element: <Login/>
       }
     ]
   },
@@ -89,9 +98,11 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
-    </QueryClientProvider>
+    <Authenticator.Provider>
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+      </QueryClientProvider>
+    </Authenticator.Provider>
   </React.StrictMode>
 );
 
