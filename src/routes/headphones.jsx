@@ -1,5 +1,4 @@
 import { NavLink, useLoaderData } from "react-router-dom";
-import { API } from "aws-amplify";
 import { Flex, Divider, Button } from "@aws-amplify/ui-react";
 import '@aws-amplify/ui-react/styles.css';
 import Card from '@mui/material/Card';
@@ -9,11 +8,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import { useState } from "react";
-import { useQueryClient, useQuery, useMutation } from "@tanstack/react-query";
-import { getProduct } from "../graphql/queries";
-import { updateProduct } from "../graphql/mutations";
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
+
 
 export default function Headphones() {
     //use the loader data

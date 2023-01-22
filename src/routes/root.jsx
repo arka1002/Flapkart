@@ -4,12 +4,18 @@ import PersonIcon from '@mui/icons-material/Person';
 import { Outlet, NavLink } from "react-router-dom";
 import { Amplify } from 'aws-amplify';
 import awsExports from '../aws-exports';
+import { useAuthenticator } from '@aws-amplify/ui-react';
+import WelcomeLogin from '../components/welcomeLogin';
+import SuccessfulLogin from '../components/successfulLogin';
+
+
 Amplify.configure(awsExports);
 
 
 
 export default function Root() {
-
+    const { authStatus } = useAuthenticator(context => [context.authStatus]);
+    console.log(authStatus);
 
 
     return (
@@ -18,9 +24,7 @@ export default function Root() {
                 <NavLink to={`/`}>
                     <h1 className='text-xl italic font-bold underline underline-offset-2'>Home <HomeIcon /> </h1>
                 </NavLink>
-                <NavLink to={`/myprofile`}>
-                    <h1 className='text-xl italic font-bold underline underline-offset-2'>My Profile <PersonIcon /> </h1>
-                </NavLink>
+                {authStatus === 'configuring' || authStatus === 'unauthenticated' ? <WelcomeLogin/> : <SuccessfulLogin/>}
 
             </div>
             <Flex direction="column">
