@@ -14,6 +14,7 @@ export const createProduct = /* GraphQL */ `
       category
       isLiked
       isCarted
+      imageLink
       createdAt
       updatedAt
     }
@@ -32,6 +33,7 @@ export const updateProduct = /* GraphQL */ `
       category
       isLiked
       isCarted
+      imageLink
       createdAt
       updatedAt
     }
@@ -50,6 +52,7 @@ export const deleteProduct = /* GraphQL */ `
       category
       isLiked
       isCarted
+      imageLink
       createdAt
       updatedAt
     }

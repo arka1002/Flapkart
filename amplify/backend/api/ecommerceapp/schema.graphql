@@ -10,4 +10,5 @@ type Product @model {
   category: String
   isLiked: String
   isCarted: String
+  imageLink: String
 }

@@ -11,6 +11,7 @@ export const getProduct = /* GraphQL */ `
       category
       isLiked
       isCarted
+      imageLink
       createdAt
       updatedAt
     }
@@ -31,6 +32,7 @@ export const listProducts = /* GraphQL */ `
         category
         isLiked
         isCarted
+        imageLink
         createdAt
         updatedAt
       }

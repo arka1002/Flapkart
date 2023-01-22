@@ -59,7 +59,7 @@ export default function Headphones() {
                                 <Card sx={{ maxWidth: 345 }}>
                                     <CardMedia
                                         sx={{ height: 140 }}
-                                        image="#"
+                                        image={headphone.imageLink}
                                         title="green iguana"
                                     />
                                     <CardContent>
@@ -67,12 +67,12 @@ export default function Headphones() {
                                             <Typography gutterBottom variant="h5" component="div">
                                                 <div className="text-cyan-500">{headphone.name}</div>
                                             </Typography>
-                                        </NavLink>
+                                        </NavLink> 
 
 
                                         <Typography variant="body2" color="text.secondary" component={'span'} >
                                             {headphone.description} <br />
-                                            <span className="text-orange-500">Price :- {headphone.price}</span>
+                                            <span className="text-orange-500">ID :- {headphone.id}</span>
                                         </Typography>
                                     </CardContent>
                                     <CardActions>
