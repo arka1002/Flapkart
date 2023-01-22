@@ -81,8 +81,7 @@ export default function Smartphones() {
                                         </Typography>
                                     </CardContent>
                                     <CardActions>
-                                        <NavLink to={`/buy`}><Button>Buy</Button></NavLink>
-                                        <CartButton id={headphone.id} />
+                                        
                                     </CardActions>
                                 </Card>
                             </div>
@@ -97,44 +96,6 @@ export default function Smartphones() {
 
 
 
-function CartButton({ id }) {
-    const queryClient = useQueryClient();
-    const mutationliking = useMutation({
-        mutationFn: async (add) => {
-            await API.graphql({
-                query: updateProduct,
-                variables: { input: { id: id, isLiked: add } }
-            })
-        },
-        onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: ['carts'] })
-        },
-    })
-
-    const { isLoading, isError, data, error } = useQuery({
-        queryKey: ['carts', id],
-        queryFn: async () => {
-            const var1 = await API.graphql({
-                query: getProduct,
-                variables: { id: id }
-            });
-            const var2 = var1.data.getProduct;
-            return var2;
-        }
-    })
 
 
-    if (isLoading) {
-        return <span>Loading...</span>
-    }
 
-    if (isError) {
-        return <span>Error: {error.message}</span>
-    }
-
-    return (
-        <>
-            {data.isLiked === "no" ? <Button onClick={() => { mutationliking.mutate("yes") }}><AddShoppingCartIcon /></Button> : <Button onClick={() => { mutationliking.mutate("no") }}><RemoveShoppingCartIcon /></Button>}
-        </>
-    );
-}
