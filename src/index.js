@@ -19,6 +19,7 @@ import Product from './routes/product';
 import Profile from './routes/profile';
 import { Authenticator } from '@aws-amplify/ui-react';
 import Login from './routes/login';
+import Success from './routes/success';
 
 
 
@@ -88,7 +89,11 @@ const router = createBrowserRouter([
       },
       {
         path: "login/",
-        element: <Login/>
+        element: <Login />
+      },
+      {
+        path: "buy/success",
+        element: <Success />
       }
     ]
   },

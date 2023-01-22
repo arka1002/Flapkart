@@ -1,4 +1,4 @@
-import { useLoaderData, useLocation, Navigate } from "react-router-dom";
+import { useLoaderData, useLocation, Navigate, NavLink } from "react-router-dom";
 import LikeButtonOnProdPage from "../components/likeButtonOnProdPage";
 import { Button, useAuthenticator, Image } from "@aws-amplify/ui-react";
 import '@aws-amplify/ui-react/styles.css';
@@ -23,8 +23,9 @@ export default function Product() {
                         {theProd.description}
                     </p>
 
-                    <div class="flex flex-row gap-4">
+                    <div class="flex flex-row gap-4 mt-2">
                         <div><LikeButtonOnProdPage id={theProd.id} /></div>
+                        <div><NavLink to={`/buy`}><Button>Buy</Button></NavLink></div>
                     </div>
 
 

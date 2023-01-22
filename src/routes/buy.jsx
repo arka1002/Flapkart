@@ -1,12 +1,21 @@
 import { useForm } from "react-hook-form";
 import '@aws-amplify/ui-react/styles.css';
-import { Button, TextField } from "@aws-amplify/ui-react";
-import { useNavigate } from "react-router-dom";
+import { TextField, useAuthenticator } from "@aws-amplify/ui-react";
+import { useNavigate, Navigate, useLocation } from "react-router-dom";
 
 export default function Buy() {
     const navigate = useNavigate();
+    const location = useLocation();
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+    const onSubmit = data => {
+        console.log(data);
+        navigate("/buy/success");
+    }
+    const { route } = useAuthenticator((context) => [context.route]);
+    if (route !== 'authenticated') {
+        return <Navigate to="/login" state={{ from: location }} replace />;
+    }
+    
 
 
     return (
