@@ -3,7 +3,6 @@ import awsExports from '../aws-exports';
 import { NavLink } from "react-router-dom";
 import HeadsetIcon from '@mui/icons-material/Headset';
 import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
-import RestaurantIcon from '@mui/icons-material/Restaurant';
 import WatchIcon from '@mui/icons-material/Watch';
 
 Amplify.configure(awsExports);

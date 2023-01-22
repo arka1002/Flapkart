@@ -2,7 +2,7 @@ import { Button } from "@aws-amplify/ui-react";
 import { useQueryClient, useQuery, useMutation } from "@tanstack/react-query";
 import { getProduct } from "../graphql/queries";
 import { updateProduct } from "../graphql/mutations";
-import { API, graphqlOperation } from "aws-amplify";
+import { API } from "aws-amplify";
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
 

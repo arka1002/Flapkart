@@ -64,18 +64,18 @@ export default function Smartphones() {
                                     <CardContent>
                                         <NavLink to={`/product/${headphone.id}`}>
                                             <Typography gutterBottom variant="h5" component="div">
-                                                {headphone.name}
+                                                <div className="text-cyan-500">{headphone.name}</div>
                                             </Typography>
                                         </NavLink>
 
 
                                         <Typography variant="body2" color="text.secondary" component={'span'} >
                                             {headphone.description} <br />
-                                            <span>Price :- {headphone.price}</span>
+                                            <span className="text-orange-500">Price :- {headphone.price}</span>
                                         </Typography>
                                     </CardContent>
                                     <CardActions>
-                                        
+
                                     </CardActions>
                                 </Card>
                             </div>

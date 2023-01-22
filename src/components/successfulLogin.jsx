@@ -4,7 +4,7 @@ import PersonIcon from '@mui/icons-material/Person';
 export default function SuccessfulLogin() {
     return (
         <>
-            <NavLink to={`/profile`}>
+            <NavLink to={`/myprofile`}>
                 <h1 className="text-xl italic font-bold underline underline-offset-2">
                     Profile <PersonIcon />
                 </h1>
