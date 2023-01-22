@@ -72,7 +72,7 @@ export default function Headphones() {
 
                                         <Typography variant="body2" color="text.secondary" component={'span'} >
                                             {headphone.description} <br />
-                                            <span className="text-orange-500">ID :- {headphone.id}</span>
+                                            <span className="text-orange-500">Price :- {headphone.price}</span>
                                         </Typography>
                                     </CardContent>
                                     <CardActions>

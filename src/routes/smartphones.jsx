@@ -58,7 +58,7 @@ export default function Smartphones() {
                                 <Card sx={{ maxWidth: 345 }}>
                                     <CardMedia
                                         sx={{ height: 140 }}
-                                        image="#"
+                                        image={headphone.imageLink}
                                         title="green iguana"
                                     />
                                     <CardContent>
@@ -71,7 +71,7 @@ export default function Smartphones() {
 
                                         <Typography variant="body2" color="text.secondary" component={'span'} >
                                             {headphone.description} <br />
-                                            <span className="text-orange-500">Price :- {headphone.price}</span>
+                                            <span className="text-orange-500">ID :- {headphone.id}</span>
                                         </Typography>
                                     </CardContent>
                                     <CardActions>

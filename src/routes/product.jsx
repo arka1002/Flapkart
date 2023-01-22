@@ -1,6 +1,6 @@
 import { useLoaderData, useLocation, Navigate } from "react-router-dom";
 import LikeButtonOnProdPage from "../components/likeButtonOnProdPage";
-import { Button, useAuthenticator } from "@aws-amplify/ui-react";
+import { Button, useAuthenticator, Image } from "@aws-amplify/ui-react";
 import '@aws-amplify/ui-react/styles.css';
 
 export default function Product() {
@@ -12,13 +12,40 @@ export default function Product() {
         return <Navigate to="/login" state={{ from: location }} replace />;
     }
     return (
-        <>
-            <h1 className="text-xl italic font-bold underline underline-offset-2">{theProd.name}</h1>
-            <p>{theProd.description}</p>
-            <p>{theProd.price}</p>
-            <LikeButtonOnProdPage id={theProd.id} />
-            <p><Button>Buy</Button></p>
+        <div id="product">
+            <div className='my-10 flex flex-col-reverse gap-y-8 md:flex-row md:justify-evenly items-center'>
+                <div>
+                    <span className='text-xl italic font-bold underline underline-offset-2'>
+                        {theProd.name}
+                    </span>
 
-        </>
+                    <p className='w-96'>
+                        {theProd.description}
+                    </p>
+
+                    <div class="flex flex-row gap-4">
+                        <div><LikeButtonOnProdPage id={theProd.id} /></div>
+                    </div>
+
+
+
+                </div>
+                <div>
+                    <Image
+                        alt="Not found"
+                        src={theProd.imageLink}
+                        objectFit="initial"
+                        objectPosition="50% 50%"
+                        backgroundColor="initial"
+                        height="75%"
+                        width="75%"
+                        opacity="100%"
+                    />
+                </div>
+
+
+            </div>
+
+        </div>
     );
 };
