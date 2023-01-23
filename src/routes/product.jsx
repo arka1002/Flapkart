@@ -22,6 +22,9 @@ export default function Product() {
                     <p className='w-96'>
                         {theProd.description}
                     </p>
+                    <p className='w-96 text-orange-500'>
+                        Price :- {theProd.price}
+                    </p>
 
                     <div class="flex flex-row gap-4 mt-2">
                         <div><LikeButtonOnProdPage id={theProd.id} /></div>
