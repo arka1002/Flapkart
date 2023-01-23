@@ -17,6 +17,12 @@
       },
       "auth": {
         "ecommerceappfb94195d": {}
+      },
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d1uxp24vnudglf",
+          "type": "cicd"
+        }
       }
     }
   }
