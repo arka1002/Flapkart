@@ -24,7 +24,7 @@ export default function Index() {
 
 
             <div className="flex flex-col place-items-center">
-                <div className="p-3 border-4 border-sky-500 rounded-md"><WatchIcon /></div>
+            <NavLink to={`/category/watches`}><div className="p-3 border-4 border-sky-500 rounded-md"><WatchIcon /></div></NavLink>
                 <div>Watches</div>
             </div>
 

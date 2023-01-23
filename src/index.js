@@ -20,7 +20,7 @@ import Profile from './routes/profile';
 import { Authenticator } from '@aws-amplify/ui-react';
 import Login from './routes/login';
 import Success from './routes/success';
-
+import Watches from './routes/watches'
 
 
 
@@ -65,6 +65,18 @@ const router = createBrowserRouter([
           })
           const phonesList = listofSmartphones.data.listProducts.items;
           return phonesList;
+        }
+      },
+      {
+        element: <Watches/>,
+        path: "category/watches",
+        loader: async () => {
+          const listOfWatches = await API.graphql({
+            query: listProducts,
+            variables: { filter: { category: { eq: "watches" } } }
+          })
+          const watches = listOfWatches.data.listProducts.items;
+          return watches;
         }
       },
       {
